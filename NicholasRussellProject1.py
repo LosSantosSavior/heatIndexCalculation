@@ -16,7 +16,7 @@ def main():
     locNum = int(float(input("\tHow many locations would you like to calculate the heat index of?")))
     if locNum < 1:
         print("Number of locations cannot be 0 or less than 0.")
-        exit(-1)
+        quit(-1)
     decPrecision = int(input("\tEnter decimal precision for calculations (1<-->4):"))
     if decPrecision < 1 or decPrecision > 4:
         print("Decimal precision number cannot be less than 0 or greater than 4.")
