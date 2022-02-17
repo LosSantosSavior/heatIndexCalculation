@@ -17,7 +17,7 @@ def main():
     if locNum < 1:
         print("Number of locations cannot be 0 or less than 0.")
         exit(-1)
-    decPrecision = int(float(input("\tEnter decimal precision for calculations (1<-->4):")))
+    decPrecision = int(input("\tEnter decimal precision for calculations (1<-->4):"))
     if decPrecision < 1 or decPrecision > 4:
         print("Decimal precision number cannot be less than 0 or greater than 4.")
         exit(-1)
@@ -38,12 +38,11 @@ def main():
         if humidity < 0 or humidity > 100:
             print("Humidity percentage cannot be less than 0% or more than 100%.")
             exit(-1)
-        HI = -42.379 + 2.04901523*temp + 10.14333127*humidity - 0.22475541*temp*humidity - 0.00683783*temp*temp - 0.05481717*humidity*humidity
-        +0.00122874*temp*temp*humidity + 0.00085282*temp*humidity*humidity - 0.00000199*temp*temp*humidity*humidity
+        HI = -42.379 + 2.04901523*temp + 10.14333127*humidity - 0.22475541*temp*humidity - 0.00683783*temp*temp - 0.05481717*humidity*humidity +0.00122874*temp*temp*humidity + 0.00085282*temp*humidity*humidity - 0.00000199*temp*temp*humidity*humidity
         if HI < minHI:
             minHI = HI
             minHILoc = locName
-        print(HI, decPrecision)
+        print(round(HI, decPrecision))
         heatIndexSum = heatIndexSum + HI
         humiditySum = humiditySum + humidity
         tempSum = tempSum + temp
@@ -51,18 +50,18 @@ def main():
     print("<<<<<<<<<<<<<<<<<<<<<<Summary>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
     print("HI:")
-    print("\tAverage recorded HI:", heatIndexSum, "degrees Fahrenheit")
+    print("\tAverage recorded HI:",round(heatIndexSum / locNum,decPrecision), "degrees Fahrenheit")
     print("\tLocation with lowest HI:")
-    print(minHILoc,",",round(heatIndexSum / locNum, decPrecision), "degrees Fahrenheit")
+    print(minHILoc,",",round(minHI,decPrecision), "degrees Fahrenheit")
 
     print("Air Temperature:")
-    print("\tAverage recorded air temperature: ", tempSum, "degrees Fahrenheit")
+    print("\tAverage recorded air temperature: ",round(tempSum / locNum,decPrecision), "degrees Fahrenheit")
     print("\tLocation with lowest air temperature:")
-    print(minTempLoc,",",round(tempSum / locNum, decPrecision), "degrees Fahrenheit")
+    print(minTempLoc,",",round(minTemp,decPrecision), "degrees Fahrenheit")
 
     print("Relative Humidity:")
-    print("\tAverage recorded relative humidity:", humiditySum, "%")
+    print("\tAverage recorded relative humidity:",round(humiditySum / locNum,decPrecision), "%")
     print("\tLocation with highest relative humidity:")
-    print(maxHumidLoc,",",round(humiditySum / locNum, decPrecision), "%")
+    print(maxHumidLoc,",",round(maxHumidity,decPrecision), "%")
 
 main()
