@@ -2,7 +2,7 @@
 #This program will take in a series of inputs from the user about the location, the amount of locations, the temperature, and
 #the relative humidity percentage, and give the user an average.
 #Created by Nicholas Russell, COMP-151-001 (MW 12:20-1:35PM)
-
+#Extra credit completed (error testing for invalid inputs for temperature and humidity)
 def main():
     heatIndexSum = 0.0
     humiditySum = 0
